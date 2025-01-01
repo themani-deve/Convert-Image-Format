@@ -1,91 +1,105 @@
 from PIL import Image
-from Authentication import login, register
+from Authentication import login, register, logout
 
 
 # Convert Format Image Section
 
 def converting():
-    image_path = input('Enter Your Image Path: ')
-    if image_path.endswith('.webp'):
-        img = Image.open(image_path)
-        if img:
-            print('1.jpg', '2.png', )
-            new_format = input('Be Che Formati Tabdil Beshe? ')
-            str_new_format = str(new_format.lower())
-            if str_new_format == '1' or str_new_format == 'jpg':
-                remove_word = '.webp'
-                output_path = image_path.replace(remove_word, '.jpg')
-                if img.mode == 'RGBA':
-                    img = img.convert('RGB')
-                    img.save(output_path, 'JPEG')
+    while True:
+        print('1.logout and finish program')
+        image_path = input('Enter Your Image Path: ')
+        if image_path.endswith('.webp'):
+            img = Image.open(image_path)
+            if img:
+                print('1.jpg', '2.png', '3.logout and finish program')
+                new_format = input('Be Che Formati Tabdil Beshe? ')
+                str_new_format = str(new_format.lower())
+                if str_new_format == '1' or str_new_format == 'jpg':
+                    remove_word = '.webp'
+                    output_path = image_path.replace(remove_word, '.jpg')
+                    if img.mode == 'RGBA':
+                        img = img.convert('RGB')
+                        img.save(output_path, 'JPEG')
+                    else:
+                        img.save(output_path, 'JPEG')
+                elif str_new_format == '2' or str_new_format == 'png':
+                    remove_word = '.webp'
+                    output_path = image_path.replace(remove_word, '.png')
+                    if img.mode == 'RGBA':
+                        img = img.convert('RGB')
+                        img.save(output_path, 'PNG')
+                    else:
+                        img.save(output_path, 'PNG')
+                elif str_new_format == '3' or str_new_format == 'logout':
+                    logout()
+                    break
                 else:
-                    img.save(output_path, 'JPEG')
-            elif str_new_format == '2' or str_new_format == 'png':
-                remove_word = '.webp'
-                output_path = image_path.replace(remove_word, '.png')
-                if img.mode == 'RGBA':
-                    img = img.convert('RGB')
-                    img.save(output_path, 'PNG')
-                else:
-                    img.save(output_path, 'PNG')
+                    print('We Cannot Convert To Your Format Selected!')
             else:
-                print('We Cannot Convert To Your Format Selected!')
-        else:
-            print('Your Path Not Correct!')
-    elif image_path.endswith('.jpg'):
-        img = Image.open(image_path)
-        if img:
-            print('1.png', '2.webp')
-            new_format = input('Be Che Formati Tabdil Beshe? ')
-            str_new_format = str(new_format.lower())
-            if str_new_format == '1' or str_new_format == 'png':
-                remove_word = '.jpg'
-                output_path = image_path.replace(remove_word, '.png')
-                if img.mode == 'RGBA':
-                    img = img.convert('RGB')
-                    img.save(output_path, 'PNG')
+                print('Your Path Not Correct!')
+        elif image_path.endswith('.jpg'):
+            img = Image.open(image_path)
+            if img:
+                print('1.png', '2.webp', '3.logout and finish program')
+                new_format = input('Be Che Formati Tabdil Beshe? ')
+                str_new_format = str(new_format.lower())
+                if str_new_format == '1' or str_new_format == 'png':
+                    remove_word = '.jpg'
+                    output_path = image_path.replace(remove_word, '.png')
+                    if img.mode == 'RGBA':
+                        img = img.convert('RGB')
+                        img.save(output_path, 'PNG')
+                    else:
+                        img.save(output_path, 'PNG')
+                elif str_new_format == '2' or str_new_format == 'webp':
+                    remove_word = '.jpg'
+                    output_path = image_path.replace(remove_word, '.webp')
+                    if img.mode == 'RGB':
+                        img = img.convert('RGBA')
+                        img.save(output_path, 'WEBP')
+                    else:
+                        img.save(output_path, 'WEBP')
+                elif str_new_format == '3' or str_new_format == 'logout':
+                    logout()
+                    break
                 else:
-                    img.save(output_path, 'PNG')
-            elif str_new_format == '2' or str_new_format == 'webp':
-                remove_word = '.jpg'
-                output_path = image_path.replace(remove_word, '.webp')
-                if img.mode == 'RGB':
-                    img = img.convert('RGBA')
-                    img.save(output_path, 'WEBP')
-                else:
-                    img.save(output_path, 'WEBP')
+                    print('We Cannot Convert To Your Format Selected!')
             else:
-                print('We Cannot Convert To Your Format Selected!')
-        else:
-            print('Your Path Not Correct!')
-    elif image_path.endswith('.png'):
-        img = Image.open(image_path)
-        if img:
-            print('1.jpg', '2.webp')
-            new_format = input('Be Che Formati Tabdil Beshe? ')
-            str_new_format = str(new_format.lower())
-            if str_new_format == '1' or str_new_format == 'jpg':
-                remove_word = '.png'
-                output_path = image_path.replace(remove_word, '.jpg')
-                if img.mode == 'RGBA':
-                    img = img.convert('RGB')
-                    img.save(output_path, 'JPEG')
+                print('Your Path Not Correct!')
+        elif image_path.endswith('.png'):
+            img = Image.open(image_path)
+            if img:
+                print('1.jpg', '2.webp', '3.logout and finish program')
+                new_format = input('Be Che Formati Tabdil Beshe? ')
+                str_new_format = str(new_format.lower())
+                if str_new_format == '1' or str_new_format == 'jpg':
+                    remove_word = '.png'
+                    output_path = image_path.replace(remove_word, '.jpg')
+                    if img.mode == 'RGBA':
+                        img = img.convert('RGB')
+                        img.save(output_path, 'JPEG')
+                    else:
+                        img.save(output_path, 'JPEG')
+                elif str_new_format == '2' or str_new_format == 'webp':
+                    remove_word = '.png'
+                    output_path = image_path.replace(remove_word, '.webp')
+                    if img.mode == 'RGB':
+                        img = img.convert('RGBA')
+                        img.save(output_path, 'WEBP')
+                    else:
+                        img.save(output_path, 'WEBP')
+                elif str_new_format == '3' or str_new_format == 'logout':
+                    logout()
+                    break
                 else:
-                    img.save(output_path, 'JPEG')
-            elif str_new_format == '2' or str_new_format == 'webp':
-                remove_word = '.png'
-                output_path = image_path.replace(remove_word, '.webp')
-                if img.mode == 'RGB':
-                    img = img.convert('RGBA')
-                    img.save(output_path, 'WEBP')
-                else:
-                    img.save(output_path, 'WEBP')
+                    print('We Cannot Convert To Your Format Selected!')
             else:
-                print('We Cannot Convert To Your Format Selected!')
+                print('Your Path Not Correct!')
+        elif image_path == '1' or image_path.lower() == 'logout':
+            logout()
+            break
         else:
-            print('Your Path Not Correct!')
-    else:
-        print('Cant Convert This Format To Any!!!')
+            print('Cant Convert This Format To Any!!!')
 
 
 print('1.Login', '2.Register')
